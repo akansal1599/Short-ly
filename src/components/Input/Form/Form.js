@@ -1,51 +1,46 @@
-import React, {useContext} from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import React, {useContext,useRef } from 'react';
 import {InputContext} from "../../../context/InputContext";
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '55%',
-        },
-        '& .MuiInputBase-root': {
-            backgroundColor: "white",
-        },
-
-    },
-    button: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-}));
+import classes from "./Form.module.css";
 
 export default function Form(props) {
-    const classes = useStyles();
-    const {url,setUrl,fetchUrl} = useContext(InputContext);
+    const {url,setUrl,button,reset,fetchUrl} = useContext(InputContext);
+    const textAreaRef = useRef(null);
+
+    function copyToClipboard(e) {
+        e.preventDefault();
+        // textAreaRef.current.select();
+        // document.execCommand('copy');
+        // This is just personal preference.
+        // I prefer to not show the the whole text area selected.
+        fetchUrl();
+        console.log(url);
+        e.target.focus();
+    };
 
     return (
-        <form className={classes.root} noValidate autoComplete="off">
+        <form>
             <div>
-                <TextField
+                <input
+                    id="input"
+                    type="text"
+                    className={classes.input}
+                    // ref={textAreaRef}
                     required
-                    id="outlined-required"
                     placeholder="Enter URL with http(s) protocol"
-                    variant="outlined"
                     value={url}
                     onChange={e =>setUrl(e.target.value)}
                 />
             </div>
-            <div className={classes.button}>
-                <Button variant="contained"
-                        color="secondary"
-                        onClick={fetchUrl}
+            <div >
+                <button
+                    type="submit"
+                    className={classes.button}
+                    onClick={copyToClipboard}
                 >
-                    SUBMIT
-                </Button>
+                    {button}
+                </button>
             </div>
+            <p className={classes.reset} onClick={reset}>Reset</p>
         </form>
     );
 }
