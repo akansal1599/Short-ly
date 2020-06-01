@@ -1,0 +1,21 @@
+.p{
+    text-align: center;
+    font-family: Dosis,sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+    margin-top: 0.1rem;
+}
+
+.icon{
+    font-weight: 900;
+}
+
+.footer {
+    background-color: #fff;
+    opacity: .5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
