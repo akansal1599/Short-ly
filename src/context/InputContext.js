@@ -10,7 +10,7 @@ const InputContextProvider = (props) => {
     const fetchUrl = () => {
         // event.preventDefault();
         if(button==="SUBMIT"){
-            let str = `http://localhost:5000/api/url/shorten`;
+            let str = `https://short-lyy.herokuapp.com/api/url/shorten`;
             console.log(url);
             axios.post(str,{
                 longUrl: url
