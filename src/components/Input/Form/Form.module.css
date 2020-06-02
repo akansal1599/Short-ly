@@ -39,7 +39,7 @@
 .reset{
     text-decoration: underline;
     cursor: pointer;
-    display: block;
+    display: inline-block;
 }
 
 .reset:hover{

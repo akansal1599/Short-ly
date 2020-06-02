@@ -1,10 +1,10 @@
-import React, {useContext,useRef } from 'react';
+import React, {useContext} from 'react';
 import {InputContext} from "../../../context/InputContext";
 import classes from "./Form.module.css";
 
 export default function Form(props) {
     const {url,setUrl,button,reset,fetchUrl} = useContext(InputContext);
-    const textAreaRef = useRef(null);
+    // const textAreaRef = useRef(null);
 
     function copyToClipboard(e) {
         e.preventDefault();
